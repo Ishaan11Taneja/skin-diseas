@@ -77,22 +77,20 @@ skin-disease-detection/
 
 ### 📦 Setup Instructions
 
-bash
+```bash
 git clone <repository-url>
 cd skin-disease-detection
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
-
 ---
 
 ## 🚀 Usage
 
 ### 1️⃣ Train the Model
-
-bash
+```bash
 python train_model.py
+```
 
 
 This will:
@@ -103,9 +101,9 @@ This will:
 
 ### 2️⃣ Launch the Web App
 
-bash
-python app.py
-
+```bash
+pip install -r requirements.txt
+```
 
 Open your browser and visit:
 
