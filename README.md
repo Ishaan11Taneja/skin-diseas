@@ -1,142 +1,187 @@
-# Skin Disease Detection AI
 
-A comprehensive machine learning application for detecting and classifying various skin conditions using scikit-learn. The application provides a modern web interface for users to upload images and receive instant predictions with severity assessments.
 
-## Features
 
-- Image upload through drag-and-drop or file selection
-- Real-time image analysis and classification
-- Support for nine different skin conditions with severity levels:
-  - High Severity:
-    - Melanoma
-    - Squamous cell carcinoma
-  - Medium Severity:
-    - Actinic keratosis
-    - Atopic Dermatitis
-    - Tinea Ringworm Candidiasis
-  - Low Severity:
-    - Benign keratosis
-    - Dermatofibroma
-    - Melanocytic nevus
-    - Vascular lesion
-- Probability scores for each condition
-- Severity-based classification
-- Modern and responsive web interface
-- Detailed analysis reports
+# 🧠 SkinCareAI – AI-Powered Skin Disease Diagnosis System
 
-## Prerequisites
+SkinCareAI is a machine learning-based web application that detects and classifies various skin diseases from dermatoscopic images. Built with Python, scikit-learn, TensorFlow, and Flask, it enables users to upload images and receive instant, severity-based predictions through a modern and responsive web interface.
 
-- Python 3.8 or higher
-- pip (Python package installer)
+---
 
-## Installation
+## 📌 Features
 
-1. Clone this repository:
-```bash
+- 🔼 **Image Upload:** Drag-and-drop or select files directly in the browser
+- ⚡ **Real-Time Analysis:** Instant classification and severity assessment
+- 🧾 **9 Skin Conditions Covered**, grouped by severity:
+
+  **High Severity**
+  - Melanoma  
+  - Squamous Cell Carcinoma  
+
+  **Medium Severity**
+  - Actinic Keratosis  
+  - Atopic Dermatitis  
+  - Tinea / Ringworm / Candidiasis  
+
+  **Low Severity**
+  - Benign Keratosis  
+  - Dermatofibroma  
+  - Melanocytic Nevus  
+  - Vascular Lesion  
+
+- 📊 **Probability Scores** for each condition
+- ✅ **Severity Classification** (Low / Medium / High)
+- 📈 **Performance Metrics Dashboard** with accuracy, precision, recall, F1-score, and confusion matrix
+- 🌐 **Responsive UI** using HTML, CSS, JavaScript
+
+---
+
+## 🧠 Model Performance
+
+| Model            | Validation Accuracy |
+|------------------|---------------------|
+| **SimpleCNN**        | **86%**             |
+| Random Forest    | 85%                 |
+| InceptionV3      | 60%                 |
+| VGG16            | 22%                 |
+| ResNet50         | 10%                 |
+| EfficientNetB0   | 8%                  |
+
+✅ **SimpleCNN** and **Random Forest** performed best, proving that simpler, well-optimized models can outperform deeper architectures on specialized datasets.
+
+---
+
+## 📂 Project Structure
+
+
+skin-disease-detection/
+├── static/              # CSS, JS files
+├── templates/           # HTML template
+├── train/ & val/        # Image datasets
+├── uploads/             # Uploaded image storage
+├── app.py               # Flask web app
+├── train\_model.py       # Model training script
+├── download\_kaggle\_dataset.py
+├── download\_images.py
+├── skin\_disease\_model.joblib
+├── class\_names.txt
+└── requirements.txt
+
+
+---
+
+## ⚙️ Installation
+
+### ✅ Prerequisites
+- Python 3.8+
+- pip
+
+### 📦 Setup Instructions
+
+bash
 git clone <repository-url>
 cd skin-disease-detection
-```
-
-2. Create a virtual environment:
-```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install the required packages:
-```bash
 pip install -r requirements.txt
-```
 
-## Project Structure
 
-```
-skin-disease-detection/
-├── static/
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       └── script.js
-├── templates/
-│   └── index.html
-├── train/
-│   ├── Actinic keratosis/
-│   ├── Atopic Dermatitis/
-│   ├── Benign keratosis/
-│   ├── Dermatofibroma/
-│   ├── Melanocytic nevus/
-│   ├── Melanoma/
-│   ├── Squamous cell carcinoma/
-│   ├── Tinea Ringworm Candidiasis/
-│   └── Vascular lesion/
-├── val/
-│   └── [same structure as train/]
-├── uploads/
-├── app.py
-├── train_model.py
-├── download_kaggle_dataset.py
-├── download_images.py
-├── requirements.txt
-├── skin_disease_model.joblib
-├── class_names.txt
-└── README.md
-```
+---
 
-## Usage
+## 🚀 Usage
 
-1. Train the model:
-```bash
+### 1️⃣ Train the Model
+
+bash
 python train_model.py
-```
+
+
 This will:
-- Load and preprocess the training data
-- Train the RandomForestClassifier model
-- Save the trained model and class names
-- Display performance metrics for each severity level
 
-2. Start the web application:
-```bash
+* Load and preprocess the training data
+* Train the model (SimpleCNN, InceptionV3, etc.)
+* Save the trained model and class labels
+
+### 2️⃣ Launch the Web App
+
+bash
 python app.py
-```
 
-3. Open your web browser and navigate to:
-```
+
+Open your browser and visit:
+
+
 http://localhost:5000
+
+
+Upload an image and click **"Analyze Image"** to receive a prediction with severity.
+
+---
+
+## 🗃 Dataset
+
+* Source: **DermNet + HAM10000**
+* \~19,500 images (training & testing)
+* JPEG, RGB format
+* Preprocessing:
+
+  * Resizing to 299x299 px
+  * Normalization (scaled to \[0,1])
+  * Augmentation: rotation, flip, zoom
+
+---
+
+## 📊 Evaluation Metrics
+
+* ✅ Accuracy
+* 🎯 Precision
+* 📢 Recall
+* 📏 F1-Score
+* 🔲 Confusion Matrix
+
+---
+
+## 🔮 Future Scope
+
+* 📷 Expand dataset diversity (age, ethnicity, lighting)
+* 🔎 Add explainable AI (Grad-CAM, LIME)
+* 🏥 Collaborate with dermatologists for clinical validation
+* ☁️ Cloud API integration for real-time predictions
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions!
+If you'd like to help improve this project, feel free to fork the repo, submit issues, or create pull requests.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+* 🧠 Supervised by: **Prof. Vishakha Arya**
+* 🏫 Institution: **DIT University, Dehradun**
+* 📚 Datasets: [Kaggle - DermNet](https://www.kaggle.com/datasets) & HAM10000
+* 🛠 Built with: Python, Flask, TensorFlow, scikit-learn, HTML/CSS/JS
+
+---
+
+## ✍️ Authors
+
+* Ishaan Taneja 
+
+---
+
+> *Empowering accessible and accurate skin disease diagnosis using AI.*
+
 ```
 
-4. Upload an image of a skin condition and click "Analyze Image" to get the prediction.
+---
 
-## Model Details
-
-The model uses scikit-learn's RandomForestClassifier with the following specifications:
-- 200 decision trees
-- Maximum depth of 20
-- Balanced class weights
-- Optimized for handling different severity levels
-
-### Model Performance
-- Overall accuracy: 64%
-- Severity-based accuracy:
-  - Low severity: 67.5%
-  - Medium severity: 73.8%
-  - High severity: 42.5%
-
-## Data Collection
-
-The project includes scripts for downloading and preparing the dataset:
-- `download_kaggle_dataset.py`: Downloads the dataset from Kaggle
-- `download_images.py`: Processes and organizes the downloaded images
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Dataset source: [Kaggle Skin Cancer Dataset]
-- Built with Flask and scikit-learn
-- Uses modern web technologies for the frontend 
+Let me know if you'd like a version with GitHub badges (e.g., license, technologies, stars) or a visual architecture diagram!
+```
